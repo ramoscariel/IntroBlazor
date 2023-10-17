@@ -1,0 +1,21 @@
+﻿<PageTitle>Current Time</PageTitle>
+<hr />
+<h3 style="background-color : #e2e3e5; border-radius:5px; width:fit-content">@currentTimeString</h3>
+
+@code {
+    private DateTime currentTime;
+    private string currentTimeString;
+
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        UpdateTime();
+        return base.OnAfterRenderAsync(firstRender);
+    }
+
+    private void UpdateTime()
+    {
+        currentTime = DateTime.Now;
+        currentTimeString = currentTime.ToLongTimeString();
+        StateHasChanged();
+    }
+}
